@@ -2,6 +2,8 @@ package ru.job4j.chess;
 
 import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
+import ru.job4j.chess.firuges.black.BishopBlack;
+
 import java.util.Arrays;
 
 public final class Logic {
@@ -21,6 +23,13 @@ public final class Logic {
     }
 
     private boolean free(Cell[] steps) throws OccupiedCellException {
+        for (Cell step : steps) {
+            for (int i = 0; i < index; i++) {
+                if (figures[i].position().equals(step)) {
+                    throw new OccupiedCellException();
+                }
+            }
+        }
         return true;
     }
 
